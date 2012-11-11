@@ -1,23 +1,23 @@
-# diox tcsh profile
+# set some aliases
 alias ls	    ls -GF
 alias grep      grep --color=auto
 alias egrep     egrep --color=auto
 alias fgrep     fgrep --color=auto
 
-
+# colored prompt
 set prompt = "%{\033[34m%}%m:%{\033[1;33m%}%B%~%b%#%{\033[0m%} "
-set autolist set color set colorcat
-setenv  LSCOLORS    "cxfxcxdxbxegedabagacad"
-setenv	PAGER	less
 
-if ( -x "$HOME/bin" ) then
-    setenv PATH $PATH":$HOME/bin"
-endif
+set autolist 	# tab completion
+set color 		# enable color display
+set colorcat
+
+setenv  LSCOLORS    "cxfxcxdxbxegedabagacad"
+setenv	EDITOR		vim
 
 if ($?prompt) then
     set history = 2048
     set savehist = 100
-    set rmstar
+    set rmstar			# prompt before `rm *' is executed
 
     if ( $?tcsh ) then
         bindkey "^W" backward-delete-word
