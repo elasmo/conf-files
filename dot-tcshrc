@@ -1,0 +1,27 @@
+# diox tcsh profile
+alias ls	    ls -GF
+alias grep      grep --color=auto
+alias egrep     egrep --color=auto
+alias fgrep     fgrep --color=auto
+
+
+set prompt = "%{\033[34m%}%m:%{\033[1;33m%}%B%~%b%#%{\033[0m%} "
+set autolist set color set colorcat
+setenv  LSCOLORS    "cxfxcxdxbxegedabagacad"
+setenv	PAGER	less
+
+if ( -x "$HOME/bin" ) then
+    setenv PATH $PATH":$HOME/bin"
+endif
+
+if ($?prompt) then
+    set history = 2048
+    set savehist = 100
+    set rmstar
+
+    if ( $?tcsh ) then
+        bindkey "^W" backward-delete-word
+        bindkey -k up history-search-backward
+        bindkey -k down history-search-forward
+    endif
+endif
