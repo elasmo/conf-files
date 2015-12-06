@@ -1,0 +1,114 @@
+" Gammies vimrc. This will work for both vim and gvim.
+
+" Use Vim settings, rather then Vi settings
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+set nomodeline " Disable trying to read modelines in files
+               " (best to keep it off if you're unaware of it anyway)
+
+if has("autocmd")
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+
+    " Inform vim that .pde and .ino are aduino files
+    autocmd! BufNewFile,BufRead *.pde setlocal filetype=arduino
+    autocmd! BufNewFile,BufRead *.ino setlocal filetype=arduino
+endif 
+
+" Load bin-files via the xxd hexdump program. Don't ask me how this works. 
+augroup Binary au!
+    au BufReadPre  *.bin let &bin=1
+    au BufReadPost *.bin if &bin | %!xxd
+    au BufReadPost *.bin set filetype=xxd | endif
+    au BufWritePre *.bin if &bin | %!xxd -r
+    au BufWritePre *.bin endif
+    au BufWritePost *.bin if &bin | %!xxd
+    au BufWritePost *.bin set nomod | endif
+augroup END
+
+if has("viminfo")
+    " Specify what to store in the global viminfo file; commandline history
+    ", search string history, etc (:help viminfo)
+    set viminfo='10,\"100,:20,%,n~/.viminfo
+endif
+
+set nobackup      " don't keep a backup file
+set history=500
+set incsearch   " do incremental searching
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+""" Encoding conversion
+" Convert non-utf8 files to utf8, and do so without marking the
+" buffer as modified
+set fileencoding=utf8 nomodified
+
+""" Indentation
+" See ":he cinoptions-values" if this seems confusing
+set cinoptions={,:,+,t0,g,^,e,n,p,(0,= cindent
+
+set nosmarttab  
+set expandtab " Substitute a <tab> keypress with
+set tabstop=4 " .. number of spaces. 
+set shiftwidth=4 " .. do the same when autoindenting as you work
+
+""" Look
+" Switch syntax highlighting on, when the terminal has colors
+if &t_Co > 2 || has("gui_running")
+    syntax on
+endif
+
+ " Inform vim that we're using a dark background color
+ " needs to be before highlights
+set background=dark
+
+if has("gui_running")
+    set guifont=Monospace\ 9 " Font to use in gvim
+    colorscheme moria " http://www.vim.org/scripts/script.php?script_id=1464
+"    highlight ColorColumn guibg=#2f2020 " Must be set after the colorscheme
+    " Gutter background (visible when using it, e.g when using vim-signify)
+else
+    colorscheme desert
+    highlight normal ctermbg=black " Force black background
+endif
+
+" Highlights must be set after the colorscheme as they override them
+" signcolumn (gutter): Dark red for console, dark blue/grey for moria(gvim)
+highlight SignColumn ctermbg=darkred guibg=#293138
+" colorcolumn: Dark grey for console, dark red for moria(gvim)
+highlight ColorColumn ctermbg=darkred guibg=#2f2020
+
+set colorcolumn=80 " Highlight the 80th column
+set cursorline     " Highlight the line on which the cursor is on
+set ruler          " show the cursor position all the time
+set showcmd        " display incomplete commands
+
+""" Keybindings
+
+" F2 / F3: Enter / leave paste+insert mode
+map <F2> <Esc>:set paste<CR>i
+map <F3> <Esc>:set nopaste<CR>
+" -: Svennetangentbord: map - to /
+"map - <Esc>/  
+ " F4: Try running the buffer-to-html plugin
+map <F4> <ESC>:runtime! syntax/2html.vim<CR>
+
+""" Sessions
+" Additional session options used with :mksession and -S, 
+" see `:help sessionoptions`
+set sessionoptions+=resize,winpos,winsize,tabpages
+
+""" Plugin options
+" Vim-signify: https://github.com/mhinz/vim-signify
+let g:signify_vcs_list = ['git']  " signify plugin variable; check for git
+let g:airline_powerline_fonts = 1 " airline plugin thing
+
+" Vim-airline
+"vim-airline doesn't appear until I create a new split; his seems to fix it?
+set laststatus=2
+"let g:airline_theme='dark'
