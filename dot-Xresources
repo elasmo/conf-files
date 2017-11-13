@@ -1,0 +1,49 @@
+! Fonts
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintfull
+!Xft.lcdfilter: lcddefault
+Xft.lcdfilter: lcdlight
+URxvt*letterSpace: -2
+URxvt*depth: 32
+URxvt.font:xft:Terminus:pixelsize=12:antialias=true:hinting.true
+!URxvt.font:xft:DroidSansMono:pixelsize=12:antialias=true:hinting.true
+!URxvt.font:xft:UbuntuMono:pixelsize=14:antialias=true:hinting:true
+!URxvt.font:xft:monospace:size=14
+
+URxvt.scrollBar: false
+
+
+! Transparency
+URxvt*transparent: true
+URxvt*shading: 10
+URxvt*blurRadius: 2x2
+!URxvt*tintColor: Yellow
+!URxvt*blurRadius: 40
+
+! Cursor
+URxvt*cursorColor: pink
+URxvt*cursorUnderline: true
+
+! Colors
+URxvt.background: #000000
+URxvt*foreground: Gray
+URxvt*color0:	#000000
+URxvt*color1:	#992222
+URxvt*color2:	#119911
+URxvt*color3:	#cc6600
+URxvt*color4:	#3333cc
+URxvt*color5:	#990099
+URxvt*color6:	#009999
+URxvt*color7:	#cccccc
+URxvt*color8:	#666666
+URxvt*color9:	#ff6666
+URxvt*color10:	#66ff66
+URxvt*color11:	#ffff66
+URxvt*color12:	#6666ff
+URxvt*color13:	#ff66ff
+URxvt*color14:	#66ffff
+URxvt*color15:	#ffffff
