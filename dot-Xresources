@@ -46,3 +46,18 @@ URxvt*color15:	#ffffff
 
 ! Misc
 URxvt.scrollBar: false
+urxvt*perl-lib:         /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:  default,matcher
+urxvt*urlLauncher:      /usr/bin/firefox
+urxvt*matcher.button:   1
+
+! https://wiki.archlinux.org/index.php/rxvt-unicode#Xresources
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+! URxvt.secondaryWheel: 1
+! do not scroll with output
+!URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+!URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+!URxvt*scrollTtyKeypress: true
