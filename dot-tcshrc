@@ -1,4 +1,5 @@
-# read by tcsh: ~/.cshrc
+# read by tcsh:
+# /<.tcshrc>|<.cshrc>
 umask 22
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin $HOME/bin)
 
