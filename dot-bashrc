@@ -63,3 +63,15 @@ shopt -s histappend # append
 # Check the window size after each command and, if necessary,                   
 # update the values of LINES and COLUMNS.                                       
 shopt -s checkwinsize                 
+
+# spice/kvm/libvirt stuffs
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+spiceme() {
+    spice_uri=$(virsh domdisplay $1);
+    if [ $? -ne 0 ]; then
+        virsh list
+    else
+        spicy -f --uri=${spice_uri};
+    fi
+}
