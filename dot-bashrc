@@ -78,7 +78,7 @@ spiceme() {
 
 vmclone() {
     source="${1}"
-    dest="$2"
+    dest="${2}"
     diskimage="/var/lib/libvirt/images/${dest}.img"
 
     if [ -f "${diskimage}" ]
