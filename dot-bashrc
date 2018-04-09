@@ -64,6 +64,11 @@ shopt -s histappend # append
 # update the values of LINES and COLUMNS.                                       
 shopt -s checkwinsize                 
 
+# URL encode
+urlencode() {
+    echo -n $1 | xxd -plain | sed 's/\(..\)/%\1/g'
+}
+
 # spice/kvm/libvirt stuffs
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
