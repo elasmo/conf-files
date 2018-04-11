@@ -85,8 +85,7 @@ vmclone() {
     dest="${2}"
     diskimage="/var/lib/libvirt/images/${dest}.img"
 
-    if [ -f "${diskimage}" ]
-    then
+    if [ -f "${diskimage}" ]; then
         echo "${diskimage} already exist."
         exit 1
     fi
