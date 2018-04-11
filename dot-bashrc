@@ -64,13 +64,12 @@ shopt -s histappend # append
 # update the values of LINES and COLUMNS.                                       
 shopt -s checkwinsize                 
 
-# URL encode
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+# Functions
 urlencode() {
     echo -n $1 | xxd -plain | sed 's/\(..\)/%\1/g'
 }
-
-# spice/kvm/libvirt stuffs
-export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 spiceme() {
     spice_uri=$(virsh domdisplay $1);
@@ -87,7 +86,7 @@ vmclone() {
     diskimage="/var/lib/libvirt/images/${dest}.img"
 
     if [ -f "${diskimage}" ]
-        then
+    then
         echo "${diskimage} already exist."
         exit 1
     fi
