@@ -1,0 +1,17 @@
+execute pathogen#infect()
+syntax enable
+filetype plugin indent on
+execute pathogen#infect('bundle/{}', '~/.vim/bundle/{}')
+colorscheme solarized
+
+call togglebg#map("<F5>")
+:nmap <C-N><C-N> :set invnumber<CR>
+
+set nomodeline
+set nobackup
+set mouse=a
+
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set softtabstop=4
