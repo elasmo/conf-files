@@ -23,6 +23,9 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+
 set hlsearch
 set incsearch
 set cursorline
