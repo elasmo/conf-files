@@ -1,122 +1,36 @@
-" Gammies vimrc. This will work for both vim and gvim.
+execute pathogen#infect()
+syntax enable
+filetype plugin indent on
 
-" Use Vim settings, rather then Vi settings
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-set nomodeline " Disable trying to read modelines in files
-               " (best to keep it off if you're unaware of it anyway)
+let g:solarized_termcolors=256
+let g:airline_theme = "solarized"
+let g:airline_highlighting_cache = 1
+let g:airline_powerline_fonts = 1
 
-if has("autocmd")
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
+colorscheme solarized
 
-    " Inform vim that .pde and .ino are aduino files
-    autocmd! BufNewFile,BufRead *.pde setlocal filetype=arduino
-    autocmd! BufNewFile,BufRead *.ino setlocal filetype=arduino
-endif 
-
-if has("viminfo")
-    " Specify what to store in the global viminfo file; commandline history
-    ", search string history, etc (:help viminfo)
-    set viminfo='10,\"100,:20,%,n~/.viminfo
-endif
-
-set nobackup      " keep a backup file
-set history=500
-set incsearch   " do incremental searching
-set hlsearch    " highlight (previous) search matches
-set scrolloff=3 " Keep this number of lines above/below the cursor
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-""" Encoding conversion
-" Convert non-utf8 files to utf8, and do so without marking the
-" buffer as modified
-set fileencoding=utf8 nomodified
-
-""" Indentation
-" See ":he cinoptions-values" if this seems confusing
-set cinoptions={,:,+,t0,g,^,e,n,p,(0,= cindent
-
-"set nosmarttab  
-"set expandtab " Substitute a <tab> keypress with
-"set shiftwidth=4 " .. do the same when autoindenting as you work
-"set tabstop=4 
-"set softtabstop=4
-
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set nowrap
-set autoindent
-set laststatus=2
-
-""" Look
-" Switch syntax highlighting on, when the terminal has colors
-if &t_Co > 2 || has("gui_running")
-    syntax on
-endif
-
- " Inform vim that we're using a dark background color
- " needs to be before highlights
-set background=dark
-
-if has("gui_running")
-    set cursorline " Highlight the line on which the cursor is on
-    set guifont=Monospace\ 9 " Font to use in gvim
-    colorscheme moria " http://www.vim.org/scripts/script.php?script_id=1464
-"    highlight ColorColumn guibg=#2f2020 " Must be set after the colorscheme
-    " Gutter background (visible when using it, e.g when using vim-signify)
-else
-    colorscheme desert
-    "highlight normal ctermbg=black " Force black background
-endif
-
-" Highlights must be set after the colorscheme as they override them
-" signcolumn (gutter): Dark red for console, dark blue/grey for moria(gvim)
-highlight SignColumn ctermbg=darkred guibg=#293138
-" colorcolumn: Dark grey for console, dark red for moria(gvim)
-highlight ColorColumn ctermbg=brown guibg=#2f2020
-
-set ruler          " show the cursor position all the time
-set colorcolumn=80 " Highlight the 80th column
-set showcmd        " display incomplete commands
-
-""" Keybindings
-
-" F2 / F3: Enter / leave paste+insert mode
+call togglebg#map("<F5>")
+:nmap <C-N> :set invnumber<CR>
 map <F2> <Esc>:set paste<CR>i
 map <F3> <Esc>:set nopaste<CR>
-" -: Svennetangentbord: map - to /
-"map - <Esc>/  
- " F4: Try running the buffer-to-html plugin
-map <F4> <ESC>:runtime! s""yntax/2html.vim<CR>
 
-" Copy selection to clipboard with ^c (
-map <C-c> "+y<CR>
-" Paste clipboard with ^p 
-" (^v is Visual Block mode, so we don't want to override that!)
-map <C-p> "+P<CR>
+set nomodeline
+set nobackup
+set mouse=a
 
-" As the above 80th column thing won't work when restoring vim sessions for
-" some reason (bug?), here's a little helper macro to restore it: 
-command Fixcol highlight ColorColumn guibg=#2f2020   
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set softtabstop=4
 
-""" Sessions
-" Additional session options used with :mksession and -S, 
-" see `:help sessionoptions`
-set sessionoptions+=resize,winpos,winsize,tabpages
+set hlsearch
+set incsearch
+set cursorline
 
-" Vim-airline
-"vim-airline doesn't appear until I create a new split; his seems to fix it?
-set laststatus=2
-"let g:airline_theme='dark'
-
-" Printer..
-"set printdevice=Brother_HL-L2340D_series
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
