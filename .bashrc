@@ -52,6 +52,7 @@ alias fgrep='fgrep --color=auto'
 alias ddate="date '+%Y%m%d%'"
 alias mdate="date '+%Y-%m-%d%'"
 alias cdate="date '+%Y%m%d%H%M%S'"
+alias week="date '+%V'"
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
 
