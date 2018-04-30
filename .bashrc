@@ -49,9 +49,7 @@ unset $kern_name
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias ddate="date '+%Y%m%d%'"
-alias mdate="date '+%Y-%m-%d%'"
-alias cdate="date '+%Y%m%d%H%M%S'"
+alias ddate="date '+%y%m%d'"
 alias week="date '+%V'"
 alias tn='tmux new -s'
 alias ta='tmux attach -t'
