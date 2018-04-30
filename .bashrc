@@ -38,13 +38,13 @@ esac
 unset $custom_prompt
 
 # Aliases
-#
-if [ $(uname) == "FreeBSD" ]; then
+kern_name=$(uname -s)
+if [ ${kern_name} == "FreeBSD" ]; then 
     alias ls='ls -GF'
-elif [ $(uname) == "Linux" ]; then
+elif [ ${kern_name} == "Linux" ]; then
     alias ls='ls --color'
-
 fi
+unset $kern_name
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
