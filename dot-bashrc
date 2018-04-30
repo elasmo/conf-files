@@ -1,6 +1,8 @@
 #  ~/.bashrc
 #
 # Globals
+#export WECHALLTOKEN=""
+#export WECHALLUSER=""
 export EDITOR="vim"
 export PAGER="less"
 export LSCOLORS="cxfxcxdxbxegedabagacad"
@@ -69,26 +71,4 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 # Functions
 urlencode() {
     echo -n $1 | xxd -plain | sed 's/\(..\)/%\1/g'
-}
-
-spiceme() {
-    spice_uri=$(virsh domdisplay $1);
-    if [ $? -ne 0 ]; then
-        virsh list
-    else
-        spicy -f --uri=${spice_uri};
-    fi
-}
-
-vmclone() {
-    source="${1}"
-    dest="${2}"
-    diskimage="/var/lib/libvirt/images/${dest}.img"
-
-    if [ -f "${diskimage}" ]; then
-        echo "${diskimage} already exist."
-        exit 1
-    fi
-
-    virt-clone -o ${source} -n ${dest} -f /var/lib/libvirt/images/${dest}.img
 }
