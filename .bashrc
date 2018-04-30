@@ -43,6 +43,7 @@ if [ $(uname) == "FreeBSD" ]; then
     alias ls='ls -GF'
 elif [ $(uname) == "Linux" ]; then
     alias ls='ls --color'
+
 fi
 
 alias grep='grep --color=auto'
@@ -62,10 +63,10 @@ bind '"\e[B": history-search-forward'
 
 # Command history
 # 
-HISTCONTROL=ignoreboth  # clean history
+HISTCONTROL=ignoreboth  # Ignore spaces an duplicates in history file
 HISTSIZE=1000
 HISTFILESIZE=2000
-shopt -s histappend # append
+shopt -s histappend     # Append history file
 
 # Bash completion
 # 
@@ -77,9 +78,7 @@ shopt -s histappend # append
 # Make less more friendly for non-text input files, see lesspipe(1)             
 [ -x /usr/bin/lesspipe.sh ] && eval "$(SHELL=/bin/sh lesspipe.sh)"              
 
-# Check the window size after each command and, if necessary,                   
-# update the values of LINES and COLUMNS.                                       
-shopt -s checkwinsize                 
+shopt -s checkwinsize   # Update LINES and COLUMNS
 
 # Encode text to hex
 urlencode() {
