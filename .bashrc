@@ -35,6 +35,8 @@ case "${TERM}" in
         ;;
 esac
 
+unset $custom_prompt
+
 # Aliases
 #
 if [ $(uname) == "FreeBSD" ]; then
