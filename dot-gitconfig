@@ -1,0 +1,5 @@
+[user]
+    name = elasmo
+    email =
+[credential]                                                                                   
+    helper = cache --timeout=3600
