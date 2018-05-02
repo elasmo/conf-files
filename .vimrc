@@ -11,9 +11,17 @@ colorscheme solarized
 
 " Keymappings
 call togglebg#map("<F5>")
-:nmap <C-N> :set invnumber<CR>
+:nmap <C-N> <Esc>:set invnumber<CR>
 map <F2> <Esc>:set paste<CR>i
 map <F3> <Esc>:set nopaste<CR>
+
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
 
 " Various settings
 set nomodeline
