@@ -11,11 +11,11 @@ colorscheme solarized
 
 " Keymappings
 call togglebg#map("<F5>")
-":nmap <C-N> <Esc>:set invnumber<CR>
 nnoremap <C-N> :set invnumber<CR>
 inoremap <C-N> <Esc>:set invnumber<CR>
 map <F2> <Esc>:set paste<CR>i
 map <F3> <Esc>:set nopaste<CR>
+vmap <C-c> <Esc>:"+y<CR>
 nnoremap <C-S-tab> :tabprevious<CR>
 nnoremap <C-tab>   :tabnext<CR>
 nnoremap <C-t>     :tabnew<CR>
