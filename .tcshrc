@@ -3,7 +3,6 @@
 umask 22
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin $HOME/bin)
 
-alias swatchmon 'jexec log swatch -t /var/log/syslog/all.log ; lock -np'
 alias ls        'ls -GF'
 alias grep      'grep --color=auto'
 alias egrep     'egrep --color=auto'
@@ -22,10 +21,17 @@ set p_wahoo    = "%{\e[2;36m%}"
 set p_yellow   = "%{\e[0;33m%}"
 set p_end      = "%{\e[0m%}"
 
+if($?TMUX) then
+    setenv TERM screen-256color
+endif
+
 if ($?prompt) then
     # An interactive shell -- set some stuff up
-    set prompt = "${p_wahoo}%m${p_end}:${p_yellow}%~ ${p_end}%# "
+    #    set prompt = "${p_wahoo}%m${p_end}:${p_yellow}%~ ${p_end}%# "
     unset p_blue p_cobia p_sturgeon p_shiner p_wahoo p_end
+
+	set prompt = "%N@%m:%~ %# "
+	set promptchars = "%#"
 
     set filec
     set history = 1000
