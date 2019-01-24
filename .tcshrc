@@ -52,7 +52,6 @@ if ($?prompt) then
         bindkey "\e[3~"   delete-char
         bindkey "\e[1~"   beginning-of-line        # xterm
         bindkey "\e[4~"   end-of-line              # xterm
-        source ~/.complete.tcsh
+        source ~/.tcsh-completion
     endif
-
 endif
