@@ -47,7 +47,7 @@ endif
 if ( ! $?hosts ) set hosts
 
 foreach f ( "$HOME/."{,r,ssh/known_}hosts* \
-  /usr/local/etc/csh.hosts /etc/hosts.equiv )
+  /usr/local/etc/csh.hosts $HOME/.tcsh.hosts /etc/hosts.equiv )
   if ( -r "$f" ) then
     set hosts=($hosts `sed \
       -e 's/#.*//' \

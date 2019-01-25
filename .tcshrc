@@ -1,5 +1,6 @@
-# read by tcsh:
-# /<.tcshrc>|<.cshrc>
+#
+# tcshrc 
+#
 umask 22
 set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin $HOME/bin)
 
@@ -12,8 +13,6 @@ setenv  EDITOR  vim
 setenv  PAGER   less
 setenv  BLOCKSIZE   K
 
-set color
-set colorcat
 #set p_cobia    = "%{\e[38;5;179m%}"
 #set p_sturgeon = "%{\e[3;32m%}"
 #set p_shiner   = "%{\e[3;31m%}"
@@ -32,7 +31,8 @@ if ($?prompt) then
 
     set prompt = "%N@%m:%~ %# " 
     set promptchars = "%#"
-
+    set color
+    set colorcat
     set filec
     set history = 1000
     set savehist = (1000 merge)
@@ -42,13 +42,11 @@ if ($?prompt) then
     set autorehash
     set mail = (/var/mail/$USER)
 
-    if ( $?tcsh ) then
-        bindkey "^W" backward-delete-word
-        bindkey -k up history-search-backward
-        bindkey -k down history-search-forward
-        bindkey "\e[3~"   delete-char
-        bindkey "\e[1~"   beginning-of-line        # xterm
-        bindkey "\e[4~"   end-of-line              # xterm
-        source ~/.tcsh-completion
-    endif
+    bindkey "^W" backward-delete-word
+    bindkey -k up history-search-backward
+    bindkey -k down history-search-forward
+    bindkey "\e[3~"   delete-char
+    bindkey "\e[1~"   beginning-of-line        # xterm
+    bindkey "\e[4~"   end-of-line              # xterm
+    source ~/.tcsh.complete
 endif
