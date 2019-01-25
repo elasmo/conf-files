@@ -30,8 +30,8 @@ if ($?prompt) then
     #    set prompt = "${p_wahoo}%m${p_end}:${p_yellow}%~ ${p_end}%# "
     unset p_blue p_cobia p_sturgeon p_shiner p_wahoo p_end
 
-	set prompt = "%N@%m:%~ %# "
-	set promptchars = "%#"
+    set prompt = "%N@%m:%~ %# " 
+    set promptchars = "%#"
 
     set filec
     set history = 1000
