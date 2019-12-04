@@ -139,3 +139,8 @@ urldecode() {
     url="0:$(echo -n "$@" | sed 's/%/ /g')"
     echo $url | xxd -r
 }
+
+genrand() {
+    [[ "$1" == "" ]] && nbytes=32 || nbytes=$1
+    cat /dev/urandom | tr -dc '[:graph:]' | fold -w ${nbytes} | head -n 1
+}
