@@ -67,6 +67,11 @@ case "$(uname -s)" in
     "Linux")
         alias ls="ls --color"
         alias cal="ncal -bM"
+        alias free="free -m"
+        alias df="df -h"
+        alias more="less"
+        alias ip="ip -c"
+        alias qemu-img="qemu-img -p"
         ;;
 esac
 
