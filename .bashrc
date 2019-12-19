@@ -61,7 +61,7 @@ case "$(uname -s)" in
     "OpenBSD")
         alias ls='colorls -G'
         alias pkglocate='pkg_info -Q'
-		;;
+        ;;
     "FreeBSD")
         alias ls='ls -GF' ;;
     "Linux")
