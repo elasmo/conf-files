@@ -65,7 +65,9 @@ case "$(uname -s)" in
     "FreeBSD")
         alias ls='ls -GF' ;;
     "Linux")
-        alias ls='ls --color' ;;
+        alias ls='ls --color'
+        alias cal='ncal -bM'
+        ;;
 esac
 
 alias grep='grep --color=auto'
