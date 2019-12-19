@@ -97,6 +97,8 @@ shopt -s histappend
 complete -cf sudo
 complete -cf doas
 complete -cf man
+complete -cf pkill
+complete -cf killall
 
 # SSH agent
 #
