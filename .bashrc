@@ -60,7 +60,7 @@ unset color_prompt force_color_prompt
 case "$(uname -s)" in
     "OpenBSD")
         alias ls='colorls -G'
-		alias pkglocate='pkg_info -Q'
+        alias pkglocate='pkg_info -Q'
 		;;
     "FreeBSD")
         alias ls='ls -GF' ;;
