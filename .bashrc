@@ -59,24 +59,24 @@ unset color_prompt force_color_prompt
 #
 case "$(uname -s)" in
     "OpenBSD")
-        alias ls='colorls -G'
-        alias pkglocate='pkg_info -Q'
+        alias ls="colorls -G"
+        alias pkglocate="pkg_info -Q"
         ;;
     "FreeBSD")
-        alias ls='ls -GF' ;;
+        alias ls="ls -GF" ;;
     "Linux")
-        alias ls='ls --color'
-        alias cal='ncal -bM'
+        alias ls="ls --color"
+        alias cal="ncal -bM"
         ;;
 esac
 
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
 alias ddate="date '+%y%m%d'"
 alias week="date '+%V'"
-alias tn='tmux new -s'
-alias ta='tmux attach -t'
+alias tn="tmux new -s"
+alias ta="tmux attach -t"
 alias calc="python3 -ic 'from math import *'"
 
 # Key bindings
