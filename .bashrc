@@ -94,11 +94,10 @@ shopt -s histappend
 #
 [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
 	source /usr/local/share/bash-completion/bash_completion.sh
-complete -cf sudo
-complete -cf doas
-complete -cf man
-complete -cf pkill
-complete -cf killall
+
+for i in sudo doas man pkill killall; do
+    complete -cf $i
+done
 
 # SSH agent
 #
