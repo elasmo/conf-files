@@ -61,12 +61,14 @@ case "$(uname -s)" in
     "OpenBSD")
         alias ls="colorls -G"
         alias pkglocate="pkg_info -Q"
+        alias cal="cal -m"
 
         # Graphic acceleration in Firefox
         export MOZ_ACCELERATED=1
         export MOZ_WEBRENDER=1
         ;;
     "FreeBSD")
+        alias cal="cal -m"
         alias ls="ls -GF" ;;
     "Linux")
         alias ls="ls --color"
