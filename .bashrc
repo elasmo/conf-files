@@ -55,12 +55,16 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# Aliases
+# OS specifics
 #
 case "$(uname -s)" in
     "OpenBSD")
         alias ls="colorls -G"
         alias pkglocate="pkg_info -Q"
+
+        # Graphic acceleration in Firefox
+        export MOZ_ACCELERATED=1
+        export MOZ_WEBRENDER=1
         ;;
     "FreeBSD")
         alias ls="ls -GF" ;;
