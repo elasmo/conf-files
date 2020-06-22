@@ -78,6 +78,8 @@ case "$(uname -s)" in
         alias more="less"
         alias ip="ip -c"
         alias qemu-img="qemu-img -p"
+        alias vl="virsh list --all"
+        alias vlr="virsh list --state-running"
         ;;
 esac
 
@@ -152,9 +154,4 @@ urlencode() {
 urldecode() {
     url="0:$(echo -n "$@" | sed 's/%/ /g')"
     echo $url | xxd -r
-}
-
-genrand() {
-    [[ "$1" == "" ]] && nbytes=32 || nbytes=$1
-    cat /dev/urandom | tr -dc '[:graph:]' | fold -w ${nbytes} | head -n 1
 }
